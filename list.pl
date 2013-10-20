@@ -26,3 +26,15 @@ inverseList(X,X,[]).
 inverseList(X,Y,[H2|T2]) :-  inverseList(X,[H2|Y],T2).
 
 inverseList(X,[H|T]) :- inverseList(X,[],[H|T]).
+
+
+%6 dire si la liste est un palindrome
+
+% renvoie  la liste passé en argument, a laquelle on a enlevé le dernier element
+removeLastElementList([],[]).
+removeLastElementList([],[H|[]]).
+removeLastElementList(X,[H|T]) :- removeLastElementList([H|X],T).
+
+isPalindrome([]).
+isPAlindrome([H|[]]).
+% isPalindrome(X) :- isPalindrome(X,[]).
