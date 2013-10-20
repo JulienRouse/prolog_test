@@ -1,4 +1,4 @@
-% exercices about Lists
+% exercices sur les Listes
 
 %1) trouver le dernier element d''une liste 
 lastOfList(H,[H|[]]).
@@ -29,12 +29,7 @@ inverseList(X,[H|T]) :- inverseList(X,[],[H|T]).
 
 
 %6 dire si la liste est un palindrome
+% solution elegante trouve sur http://stackoverflow.com/questions/8669685/prolog-palindrome-functor
+% beaucoup mieux que ce que j''avais fait
+isPalindrome(X) :- inverseList(X,X).
 
-% renvoie  la liste passé en argument, a laquelle on a enlevé le dernier element
-removeLastElementList([],[]).
-removeLastElementList([],[H|[]]).
-removeLastElementList(X,[H|T]) :- removeLastElementList([H|X],T).
-
-isPalindrome([]).
-isPAlindrome([H|[]]).
-% isPalindrome(X) :- isPalindrome(X,[]).
