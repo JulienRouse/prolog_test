@@ -19,3 +19,10 @@ kthOfList(X,[_|T],K) :-K1 is K-1, kthOfList(X,T,K1).
 nbrElementList(0,[]).
 nbrElementList(1,[_|[]]).
 nbrElementList(X,[_|T]) :-  nbrElementList(X1,T) , X is X1+1 .
+
+
+%5 inverser une liste
+inverseList(X,X,[]).
+inverseList(X,Y,[H2|T2]) :-  inverseList(X,[H2|Y],T2).
+
+inverseList(X,[H|T]) :- inverseList(X,[],[H|T]).
