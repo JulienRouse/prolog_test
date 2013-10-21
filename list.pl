@@ -1,7 +1,17 @@
 % exercices sur les Listes
+ :-module(list,
+	            [lastOfList/2,
+		     lastButOneOfList/2,
+		     kthOfList/3,
+		     nbrElementList/2,
+		     inverseList/2,
+		     isPalindrome/1,
+		     append/3,
+		     flatten/2]). 
+
 
 %1) trouver le dernier element d''une liste 
-lastOfList(H,[H|[]]).
+lastOfList(H,[H|[]]):-!.
 lastOfList(X,[_|T]) :- lastOfList(X,T).
 
  
@@ -31,6 +41,7 @@ inverseList(X,[H|T]) :- inverseList(X,[],[H|T]).
 %6 dire si la liste est un palindrome
 % solution elegante trouve sur http://stackoverflow.com/questions/8669685/prolog-palindrome-functor
 % beaucoup mieux que ce que j''avais fait
+isPalindrome([]).
 isPalindrome(X) :- inverseList(X,X).
 
 %7 Transform a list, possibly holding lists as elements into a 'flat' list by replacing each list with its elements (recursively).
