@@ -33,3 +33,17 @@ inverseList(X,[H|T]) :- inverseList(X,[],[H|T]).
 % beaucoup mieux que ce que j''avais fait
 isPalindrome(X) :- inverseList(X,X).
 
+%7 Transform a list, possibly holding lists as elements into a 'flat' list by replacing each list with its elements (recursively).
+
+% on ajoute append puisqu''il va nous servir 
+append([X|Y],Z,[X|W]) :- append(Y,Z,W).  
+append([],X,X).
+
+% ! is the operator that stop the backtrack
+flatten([], []) :- !.
+flatten(FlatL,[L|Ls]) :-
+    !,
+    flatten(NewL,L),
+    flatten(NewLs,Ls),
+    append(NewL, NewLs, FlatL).
+flatten([L],L).
