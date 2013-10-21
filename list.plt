@@ -1,9 +1,9 @@
 %load_test_files(list). pour charger ces tests.
-%run_test. pour lancer les tests.
+%run_tests. pour lancer les tests.
 
 
 :- begin_tests(list_test).
-:- ensure_loaded([list]).
+:- use_module(list).
 
 test(lastOfList_one) :- 
 		 lastOfList(a,[a]).
