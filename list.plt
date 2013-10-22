@@ -43,15 +43,13 @@ test(kthOfList_full) :-
 %test nbrElementList
 %--------------------------------------------------------------
 
-test (nbrElementList_empty) :-
+test(nbrElementList_empty) :-
      		nbrElementList(0,[]).
-test (nbrElementList_one) :-
+test(nbrElementList_one) :-
      		nbrElementList(1,[a]).
-test (nbrElementList_full) :-
+test(nbrElementList_full) :-
      		nbrElementList(4,[a,b,c,d]).
-	    
-
-
+	   
 
 %---------------------------------------------------------
 %
