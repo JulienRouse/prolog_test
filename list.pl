@@ -26,9 +26,9 @@ kthOfList(X,[_|T],K) :-K1 is K-1, kthOfList(X,T,K1).
 
 
 %4) afficher le nombre d''element d''une liste
-nbrElementList(0,[]).
+nbrElementList(0,[]):-!.
 nbrElementList(1,[_|[]]):-!.
-nbrElementList(X,[_|T]) :-  nbrElementList(X1,T) , X is X1+1 .
+nbrElementList(X,[_|T]) :-!,  nbrElementList(X1,T) , X is X1+1 .
 
 
 %5 inverser une liste
