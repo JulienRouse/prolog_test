@@ -49,15 +49,20 @@ test(nbrElementList_one) :-
      		nbrElementList(1,[a]).
 test(nbrElementList_full) :-
      		nbrElementList(4,[a,b,c,d]).
-	   
-
 %---------------------------------------------------------
-%
+%test inverseList
 %-------------------------------------------------------------
-test(inverseList) :-
-        inverseList([a,b], [b,a]).
 
+test(inverseList_empty) :-
+        inverseList([], []).
+test(inverseList_one) :-
+        inverseList([a], [a]).
+test(inverseList_full) :-
+        inverseList([a,b,c], [c,b,a]).
 
+%----------------------------------------------------------------
+%
+%---------------------------------------------------------------
 
 test(palindrome_empty) :-
 		       isPalindrome([]).
