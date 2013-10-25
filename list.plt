@@ -61,7 +61,7 @@ test(inverseList_full) :-
         inverseList([a,b,c], [c,b,a]).
 
 %----------------------------------------------------------------
-%
+%test isPalindrome
 %---------------------------------------------------------------
 
 test(palindrome_empty) :-
@@ -70,5 +70,17 @@ test(palindrome_one) :-
 		     isPalindrome([a]).
 test(palindrome_full) :-
 		      isPalindrome([a,b,c,b,a]).
+
+%-------------------------------------------------------------
+%test flatten
+%------------------------------------------------------------
+
+test(flatten_empty) :-
+	flatten([],[]).
+test(flatten_one) :-
+        flatten([a],[[a]]).
+test(flatten_full) :-
+	flatten([a,b,c,d,e,f],[a,[b,[c,d],[e]],f]).
+
 
 :- end_tests(list_test).
