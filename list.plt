@@ -72,8 +72,15 @@ test(palindrome_full) :-
 		      isPalindrome([a,b,c,b,a]).
 
 %-------------------------------------------------------------
-%test flatten
+%test flatten and append
 %------------------------------------------------------------
+
+test(append_empty) :-
+	append([],[],[]).
+test(append_one) :-
+ 	append([a],[b],[a,b]).
+test(append_full) :-
+	append([a,b,c],[b,c,a],[a,b,c,b,c,a]).
 
 test(flatten_empty) :-
 	flatten([],[]).
