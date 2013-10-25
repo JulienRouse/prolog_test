@@ -7,7 +7,8 @@
 		     inverseList/2,
 		     isPalindrome/1,
 		     append/3,
-		     flatten/2]). 
+		     flatten/2,
+		     compress/2]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -31,7 +32,7 @@ nbrElementList(1,[_|[]]):-!.
 nbrElementList(X,[_|T]) :-!,  nbrElementList(X1,T) , X is X1+1 .
 
 
-%5 inverser une liste
+%5 Inverser une liste
 inverseList(X,X,[]):-!.
 inverseList(X,Y,[H2|T2]) :-  inverseList(X,[H2|Y],T2).
 
@@ -39,7 +40,7 @@ inverseList([],[]):-!.
 inverseList(X,[H|T]) :- inverseList(X,[],[H|T]).
 
 
-%6 dire si la liste est un palindrome
+%6 Dire si la liste est un palindrome
 % solution elegante trouve sur http://stackoverflow.com/questions/8669685/prolog-palindrome-functor
 % beaucoup mieux que ce que j''avais fait
 isPalindrome([]):- !.
@@ -59,3 +60,14 @@ flatten(FlatL,[L|Ls]) :-
     flatten(NewLs,Ls),
     append(NewL, NewLs, FlatL).
 flatten([L],L).
+
+
+%8 Eliminate consecutive duplicates of list elements.
+%  If a list contains repeated elements they should be replaced with a single copy of the element. The order of the elements should not be changed.
+
+compress([],[]):- !.
+compress(X,Y):- compress(X,[],Y).
+
+compress(Y,X,[]):-!,inverseList(Y,X).
+compress(X,Y,[H1,H2|T]):- H1 == H2,!, compress(X,Y,[H1|T]).
+compress(X,Y,[H1|T]):- compress(X,[H1|Y],T).
