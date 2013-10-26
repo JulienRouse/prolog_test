@@ -100,7 +100,14 @@ test(compress_full):-
 	compress([a,b,c],[a,a,a,b,c,c,c,c]).
 
 %------------------------------------------------------------------
-%
+%test pack
 %------------------------------------------------------------------
+test(pack_empty):-
+	pack([],[]).
+test(pack_one):-
+	pack([[a]],[a]).
+test(pack_empty):-
+	pack([[a,a,a],[b,b]],[a,a,a,b,b]).
+
 
 :- end_tests(list_test).
