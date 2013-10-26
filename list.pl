@@ -80,5 +80,15 @@ pack(X,Y):-pack(X,[],Y).
 
 pack(X,Y,[]):-!,inverseList(X,Y).
 pack(X,[],[H2|T2]):-!,pack(X,[[H2]],T2).
-pack(X,[[H1|T1]|T3],[H2|T2]):- H1 == H2,!, pack(X,[[H1,H2|T1]|T3],T2).
-pack(X,[[H1|T1]|T3],[H2|T2]):- H1 \= H2,!,pack(X,[[H2],[H1|T1]|T3],T2).  
+pack(X,[[H1|T1]|T3],[H2|T2]):- H1 == H2, !, pack(X,[[H1,H2|T1]|T3],T2).
+pack(X,[[H1|T1]|T3],[H2|T2]):- H1 \= H2, !, pack(X,[[H2],[H1|T1]|T3],T2).  
+
+
+%10 Run-length encoding of a list.
+%   Use the result of problem 1.09 to implement the so-called run-length encoding data compression method. 
+%   Consecutive duplicates of elements are encoded as terms [N,E] where N is the number of duplicates of the element E.
+nbElementDansListe([X|Y],Y):-nbrElementList(X,Y).
+
+encode(X,Y):-encode(X,[],Y).
+
+
