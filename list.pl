@@ -8,7 +8,8 @@
 		     isPalindrome/1,
 		     append/3,
 		     flatten/2,
-		     compress/2]). 
+		     compress/2,
+                     pack/2]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -71,3 +72,13 @@ compress(X,Y):- compress(X,[],Y).
 compress(Y,X,[]):-!,inverseList(Y,X).
 compress(X,Y,[H1,H2|T]):- H1 == H2,!, compress(X,Y,[H1|T]).
 compress(X,Y,[H1|T]):- compress(X,[H1|Y],T).
+
+%9 Pack consecutive duplicates of list elements into sublists.
+%   If a list contains repeated elements they should be placed in separate sublists.
+pack([],[]):-!.
+pack(X,Y):-pack(X,[],Y).
+
+pack(X,Y,[]):-!,inverseList(X,Y).
+pack(X,[],[H2|T2]):-!,pack(X,[[H2]],T2).
+pack(X,[[H1|T1]|T3],[H2|T2]):- H1 == H2,!, pack(X,[[H1,H2|T1]|T3],T2).
+pack(X,[[H1|T1]|T3],[H2|T2]):- H1 \= H2,!,pack(X,[[H2],[H1|T1]|T3],T2).  
