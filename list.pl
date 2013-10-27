@@ -9,7 +9,8 @@
 		     append/3,
 		     flatten/2,
 		     compress/2,
-                     pack/2]). 
+                     pack/2,
+		     encode/2]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -87,8 +88,13 @@ pack(X,[[H1|T1]|T3],[H2|T2]):- H1 \= H2, !, pack(X,[[H2],[H1|T1]|T3],T2).
 %10 Run-length encoding of a list.
 %   Use the result of problem 1.09 to implement the so-called run-length encoding data compression method. 
 %   Consecutive duplicates of elements are encoded as terms [N,E] where N is the number of duplicates of the element E.
-nbElementDansListe([X|Y],Y):-nbrElementList(X,Y).
+encodeNb([X,H],[H|T]):-nbrElementList(X,[H|T]).
 
-encode(X,Y):-encode(X,[],Y).
+encode_aux(X,Y,[]):-!,inverseList(X,Y).
+encode_aux(X,Z,[H|T]):- encodeNb(A,H),encode_aux(X,[A|Z],T).  
+
+
+encode([],[]):-!.
+encode(X,Y):-pack(Z,Y), encode_aux(X,[],Z).
 
 
