@@ -109,5 +109,17 @@ test(pack_one):-
 test(pack_empty):-
 	pack([[a,a,a],[b,b]],[a,a,a,b,b]).
 
+%------------------------------------------------------------------
+%test encode
+%------------------------------------------------------------------
+test(encode_empty):-
+	encode([],[]).
+test(encode_one):-
+	encode([[1,a]],[a]).
+test(encode_full):-
+	encode([[2,a],[3,b]],[a,a,b,b,b]).
+
+
+
 
 :- end_tests(list_test).
