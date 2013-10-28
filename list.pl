@@ -100,7 +100,7 @@ encode(X,Y):-pack(Z,Y), encode_aux(X,[],Z).
 
 %14 Duplicate the elements of a list.
 
-dupli(X,X,[]):-!.
+dupli(X,Y,[]):-!,inverseList(X,Y).
 dupli(X,Y,[H|T]):-dupli(X,[H,H|Y],T).
 
 
