@@ -10,7 +10,8 @@
 		     flatten/2,
 		     compress/2,
                      pack/2,
-		     encode/2]). 
+		     encode/2,
+		     dupli/2]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -97,4 +98,12 @@ encode_aux(X,Z,[H|T]):- encodeNb(A,H),encode_aux(X,[A|Z],T).
 encode([],[]):-!.
 encode(X,Y):-pack(Z,Y), encode_aux(X,[],Z).
 
+%14 Duplicate the elements of a list.
 
+dupli(X,X,[]):-!.
+dupli(X,Y,[H|T]):-dupli(X,[H,H|Y],T).
+
+
+dupli([],[]):-!.
+dupli(X,Y):-dupli(X,[],Y).
+ 
