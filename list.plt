@@ -119,7 +119,16 @@ test(encode_one):-
 test(encode_full):-
 	encode([[2,a],[3,b]],[a,a,b,b,b]).
 
+%-----------------------------------------------------------------
+%test dupli
+%-----------------------------------------------------------------
 
+test(dupli_empty):-
+	dupli([],[]).
+test(dupli_one):-
+	dupli([a,a],[a]).
+test(dupli_full):-
+	dupli([a,a,b,b,a,a,a,a],[a,b,a,a]).
 
 
 :- end_tests(list_test).
