@@ -11,7 +11,8 @@
 		     compress/2,
                      pack/2,
 		     encode/2,
-		     dupli/2]). 
+		     dupli/2,
+		     dupli/3]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -100,10 +101,20 @@ encode(X,Y):-pack(Z,Y), encode_aux(X,[],Z).
 
 %14 Duplicate the elements of a list.
 
-dupli(X,Y,[]):-!,inverseList(X,Y).
-dupli(X,Y,[H|T]):-dupli(X,[H,H|Y],T).
+dupli_aux(X,Y,[]):-!,inverseList(X,Y).
+dupli_aux(X,Y,[H|T]):-dupli_aux(X,[H,H|Y],T).
 
 
 dupli([],[]):-!.
-dupli(X,Y):-dupli(X,[],Y).
- 
+dupli(X,Y):-dupli_aux(X,[],Y).
+
+%15 Duplicate the elements of a list a given number of times.
+
+dupli_aux(X,Z,_,_,[]):-!, inverseList(X,Z).
+dupli_aux(X,Z,0,A,[_|T]):-!, dupli_aux(X,Z,A,A,T).
+dupli_aux(X,Z,Y,A,[H|T]):-Y >= 1, Y1 is Y-1, dupli_aux(X,[H|Z],Y1,A,[H|T]). 
+
+dupli([],0,_):-!.
+dupli(X,1,X):-!.
+dupli(X,Y,Z):- dupli_aux(X,[],Y,Y,Z).
+
