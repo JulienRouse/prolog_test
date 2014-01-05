@@ -12,7 +12,8 @@
                      pack/2,
 		     encode/2,
 		     dupli/2,
-		     dupli/3]). 
+		     dupli/3,
+			 drop_nth/3]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -117,4 +118,12 @@ dupli_aux(X,Z,Y,A,[H|T]):-Y >= 1, Y1 is Y-1, dupli_aux(X,[H|Z],Y1,A,[H|T]).
 dupli([],0,_):-!.
 dupli(X,1,X):-!.
 dupli(X,Y,Z):- dupli_aux(X,[],Y,Y,Z).
+
+%16 Drop every N'th element from a list.
+
+drop_nth(X,N,Y) :-!,drop_nth(Y,N,X,N).
+
+drop_nth([],_,[],_):-!.
+drop_nth([_|T],N,Y,1) :- !,drop_nth(T,N,Y,N).
+drop_nth([H|T],N,[H|Y],K) :- K > 1, K1 is K - 1, drop_nth(T,N,Y,K1).
 
