@@ -13,7 +13,8 @@
 		     encode/2,
 		     dupli/2,
 		     dupli/3,
-			 drop_nth/3]). 
+			 drop_nth/3,
+			 splitt/4 ]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -127,3 +128,8 @@ drop_nth([],_,[],_):-!.
 drop_nth([_|T],N,Y,1) :- !,drop_nth(T,N,Y,N).
 drop_nth([H|T],N,[H|Y],K) :- K > 1, K1 is K - 1, drop_nth(T,N,Y,K1).
 
+%17Split a list into two parts; the length of the first part is given.
+%    Do not use any predefined predicates.
+
+splitt([],L,L,0).
+splitt([X|X1],X2,[X|L],N) :- N > 0, N1 is N - 1, splitt(X1,X2,L,N1).
