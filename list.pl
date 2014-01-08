@@ -14,7 +14,8 @@
 		     dupli/2,
 		     dupli/3,
 			 drop_nth/3,
-			 splitt/4 ]). 
+			 splitt/4 ,
+			 slice/4]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -133,3 +134,10 @@ drop_nth([H|T],N,[H|Y],K) :- K > 1, K1 is K - 1, drop_nth(T,N,Y,K1).
 
 splitt([],L,L,0).
 splitt([X|X1],X2,[X|L],N) :- N > 0, N1 is N - 1, splitt(X1,X2,L,N1).
+
+%18 Extract a slice from a list.
+%    Given two indices, I and K, the slice is the list containing the elements between the I'th and K'th element of the original list (both limits included). Start counting the elements with 1.
+slice([],L,0,0).
+slice(Z1,L,N1,N2):- N2>=N1, N4 is N1-1 , splitt(Y1,Y2,L,N4),N3 is N2-N4,splitt(Z1,_,Y2,N3).
+
+
