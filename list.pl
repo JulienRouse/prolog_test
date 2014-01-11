@@ -143,10 +143,8 @@ slice(Z1,L,N1,N2):- N2>=N1, N4 is N1-1 , splitt(_,Y2,L,N4),N3 is N2-N4,splitt(Z1
 
 %19 Rotate a list N places to the left.
 
-% on va differencier le cas ou N>0 et celui ou N<0
-% pour N>0 
-
 rotateList([],_,[]) :- !.
 rotateList(L1,N,L2) :-
    nbrElementList(N1,L2), N2 is N mod N1, splitt(R1,R2,L2,N2), append(R2,R1,L1).
 
+%20 Remove the K'th element from a list.
