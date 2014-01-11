@@ -16,7 +16,8 @@
 		     drop_nth/3,
 		     splitt/4 ,
 		     slice/4,
-		     rotateList/3]). 
+		     rotateList/3,
+		     remove_at/4]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -133,7 +134,7 @@ drop_nth([H|T],N,[H|Y],K) :- K > 1, K1 is K - 1, drop_nth(T,N,Y,K1).
 %17 Split a list into two parts; the length of the first part is given.
 %    Do not use any predefined predicates.
 
-splitt([],L,L,0).
+splitt([],L,L,0):-!.
 splitt([X|X1],X2,[X|L],N) :- N > 0, N1 is N - 1, splitt(X1,X2,L,N1).
 
 %18 Extract a slice from a list.
@@ -147,4 +148,10 @@ rotateList([],_,[]) :- !.
 rotateList(L1,N,L2) :-
    nbrElementList(N1,L2), N2 is N mod N1, splitt(R1,R2,L2,N2), append(R2,R1,L1).
 
-%20 Remove the K'th element from a list.
+%20 Remove the K''th element from a list.
+tete(H,[H|_]).
+
+% pas tres elegant, mais ca a lair de marcher,
+% se repencher sur la question un peu plus tard.
+remove_at(RemovedElt,RemainingList,ListOriginal,N):-
+    N1 is N-1,splitt(L1,L2,ListOriginal,N1), splitt(L3,L4,L2,1),tete(RemovedElt,L3),append(L1,L4,RemainingList),!.
