@@ -18,7 +18,8 @@
 		     slice/4,
 		     rotateList/3,
 		     remove_at/4,
-		     insert_at/4]). 
+		     insert_at/4,
+		     range/3]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -162,3 +163,5 @@ insert_at(NewList,OldList,EltToInsert,N):-
     N1 is N-1,splitt(L1,L2,OldList,N1),append(L1,[EltToInsert|L2],NewList).
 
 %22 Create a list containing all integers within a given range.
+range([],N1,N2):- N1 > N2,!.
+range([N1|L],N1,N2):-N3 is N1 + 1, range(L,N3,N2).
