@@ -19,7 +19,8 @@
 		     rotateList/3,
 		     remove_at/4,
 		     insert_at/4,
-		     range/3]). 
+		     range/3,
+		     rnd_select/3]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -165,3 +166,13 @@ insert_at(NewList,OldList,EltToInsert,N):-
 %22 Create a list containing all integers within a given range.
 range([],N1,N2):- N1 > N2,!.
 range([N1|L],N1,N2):-N3 is N1 + 1, range(L,N3,N2).
+
+%23 Extract a given number of randomly selected elements from a list.
+
+%rnd_select([],_,0).
+%rnd_select(RndList,OldList,N):- 
+%    N > 0, length(OldList,A),
+%    A1 is A - 1,write(A1),
+%    B is random(A1),B1 is B+1,
+%    remove_at(X,L,OldList,B1),N1 is N-1,
+%    rnd_select([X|RndList],L,N1).
