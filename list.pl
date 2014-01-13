@@ -17,7 +17,8 @@
 		     splitt/4 ,
 		     slice/4,
 		     rotateList/3,
-		     remove_at/4]). 
+		     remove_at/4,
+		     insert_at/4]). 
 
 
 %1) trouver le dernier element d''une liste 
@@ -155,3 +156,9 @@ tete(H,[H|_]).
 % se repencher sur la question un peu plus tard.
 remove_at(RemovedElt,RemainingList,ListOriginal,N):-
     N1 is N-1,splitt(L1,L2,ListOriginal,N1), splitt(L3,L4,L2,1),tete(RemovedElt,L3),append(L1,L4,RemainingList),!.
+
+%21 Insert an element at a given position into a list.
+insert_at(NewList,OldList,EltToInsert,N):-
+    N1 is N-1,splitt(L1,L2,OldList,N1),append(L1,[EltToInsert|L2],NewList).
+
+%22 Create a list containing all integers within a given range.
